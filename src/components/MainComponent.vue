@@ -47,6 +47,15 @@ export default {
 
 <template>
     <main>
+        <section class="middle-banner">
+            <div class="container">
+                <div class="banner-div">
+                    <img src="../assets/img/page-banner-1-768x71.webp" alt="banner">
+                </div>
+
+            </div>
+
+        </section>
         <section class="main-bottom">
             <div class="row">
                 <div class="col-2" v-for="(topic, index) in topics" :key="index">
@@ -68,6 +77,28 @@ export default {
 @use "../assets/scss/reset.scss" as *;
 
 main {
+
+    & .container {
+        width: 1000px;
+        margin: 0 auto;
+    }
+
+    & .middle-banner {
+        background-color: $third-color;
+        padding: 20px 0;
+
+        & .banner-div {
+            margin: 0 auto;
+            width: 100%;
+            height: 90px;
+
+            & img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+
     & .main-bottom {
         padding: 20px 0;
 
