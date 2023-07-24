@@ -14,7 +14,7 @@ export default {
 
 <template>
     <main>
-        MAIN
+        MAINN
     </main>
 </template>
 

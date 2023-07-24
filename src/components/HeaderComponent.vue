@@ -14,7 +14,7 @@ export default {
 
 <template>
     <header>
-        HEADER
+        HEADERR
     </header>
 </template>
 

@@ -14,7 +14,7 @@ export default {
 
 <template>
     <footer>
-        FOOTER
+        FOOTERR
     </footer>
 </template>
 
