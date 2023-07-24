@@ -28,9 +28,29 @@ export default {
                     title: 'TRAVEL',
                     img: 'best-places.webp'
                 }
-
-
-
+            },
+            featuredPosts: {
+                animePost: {
+                    date: 'December 26, 2022',
+                    text: 'Lorem ipsum dolor sit amet, conse ctetur adipiscing elit. Sed maximus orci ac condi mentum...',
+                    img: 'photographers-mistakes.webp',
+                    title: 'Live Ideas You Might Be Anime',
+                    type: ['Culture', 'Stories']
+                },
+                francePost: {
+                    date: 'December 26, 2022',
+                    text: 'Lorem ipsum dolor sit amet, conse ctetur adipiscing elit. Sed maximus orci ac condi mentum...',
+                    img: 'visit-france.webp',
+                    title: 'Reasons To Visit France',
+                    type: ['Lifestyle', 'Travel']
+                },
+                alonePost: {
+                    date: 'December 26, 2022',
+                    text: 'Lorem ipsum dolor sit amet, conse ctetur adipiscing elit. Sed maximus orci ac condi mentum...',
+                    img: 'travel-alone.webp',
+                    title: 'Traveling Alone Is Awesome',
+                    type: ['Stories', 'Travel']
+                }
 
             }
         }
@@ -52,7 +72,41 @@ export default {
                 <div class="banner-div">
                     <img src="../assets/img/page-banner-1-768x71.webp" alt="banner">
                 </div>
+            </div>
+        </section>
 
+        <section class="featured-posts">
+            <div class="container">
+                <h2>
+                    Featured Posts
+                </h2>
+                <div class="row">
+                    <div class="my-col" v-for="(card, i) in featuredPosts" :key="i">
+                        <div class="card-img">
+                            <img :src="getImg(`../assets/img/${card.img} `)" alt="">
+                            <div class="mini-card">
+                                <span>{{ card.type[0] }}</span>
+                                <span>{{ card.type[1] }}</span>
+                            </div>
+                        </div>
+                        <div class="card-info">
+                            <h4>
+                                {{ card.title }}
+                            </h4>
+                            <p>
+                                {{ card.date }}
+                            </p>
+                            <p class="text">
+                                {{ card.text }}
+                            </p>
+                            <a href="#">
+                                Read more
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
             </div>
 
         </section>
@@ -95,6 +149,72 @@ main {
             & img {
                 width: 100%;
                 height: 100%;
+            }
+        }
+    }
+
+    & .featured-posts {
+
+        & h2 {
+            text-transform: uppercase;
+            padding: 10px 0;
+        }
+
+        & .row {
+            display: flex;
+            justify-content: space-between;
+
+            & .my-col {
+                width: calc(100% / 3 - 10px);
+
+                & .card-img {
+                    width: 100%;
+                    height: 200px;
+                    position: relative;
+
+
+                    & img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+
+                    & .mini-card {
+                        position: absolute;
+                        top: 10px;
+                        left: 50%;
+                        transform: translate(- 50%);
+
+
+                        span {
+                            padding: 2px 10px;
+                            margin: 2px;
+                            border: 1px solid black;
+                            border-radius: 5px;
+                            background-color: $third-color;
+
+                        }
+                    }
+                }
+
+                & .card-info {
+                    text-align: center;
+                    padding: 20px 0;
+                    background-color: $third-color;
+
+                    & .text {
+                        padding-top: 10px;
+                        margin-bottom: 20px;
+                    }
+
+                    & a {
+                        padding: 5px 15px;
+                        background-color: $main-color;
+                        border-radius: 20px;
+                        color: $secondary-color;
+                        text-decoration: none;
+                    }
+                }
             }
         }
     }
