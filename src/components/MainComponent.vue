@@ -73,6 +73,7 @@ main {
 
         & .row {
             display: flex;
+            justify-content: space-between;
 
             & .col-2 {
 
@@ -80,9 +81,19 @@ main {
                 margin: 0 5px;
 
                 & .img-div {
-                    max-width: 200px;
+                    width: 100%;
                     height: 150px;
                     position: relative;
+
+                    &:hover img {
+                        cursor: pointer;
+                        filter: brightness(0.9);
+                    }
+
+                    &:hover h3 {
+                        cursor: pointer;
+                        text-shadow: 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black;
+                    }
 
                     & img {
                         width: 100%;
@@ -90,16 +101,20 @@ main {
                         object-fit: cover;
                         filter: brightness(0.7);
                     }
+
+                    & h3 {
+                        color: $secondary-color;
+                        font-weight: bold;
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(- 50%, - 50%);
+
+
+                    }
                 }
 
-                & h3 {
-                    color: $secondary-color;
-                    font-weight: bold;
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(- 50%, - 50%);
-                }
+
 
             }
         }
