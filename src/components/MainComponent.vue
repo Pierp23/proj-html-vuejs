@@ -4,13 +4,25 @@ export default {
     data() {
         return {
             topics: {
-                fascion: {
+                fashion: {
                     title: 'FASHION',
-                    img: 'anime-fashion.webp'
+                    img: 'anime-fashion.webp',
+                    mainType: 'Fashion',
+                    secondType: 'Lifestyle',
+                    description: 'Fashion Trend Now A Day',
+                    user: 'Demo',
+                    date: 'December 25, 2022',
+
                 },
                 culture: {
                     title: 'CULTURE',
-                    img: 'success-story.webp'
+                    img: 'success-story.webp',
+                    mainType: 'Culture',
+                    secondType: 'Lifestyle',
+                    description: 'Music The Love Of My Life',
+                    user: 'Demo',
+                    date: 'December 25, 2022',
+
                 },
                 food: {
                     title: 'FOOD',
@@ -18,15 +30,32 @@ export default {
                 },
                 lifestyle: {
                     title: 'LIFESTYLE',
-                    img: 'visit-france.webp'
+                    img: 'visit-france.webp',
+                    mainType: 'Lifestyle',
+                    secondType: 'Travel',
+                    description: 'Reasons To Visit France',
+                    user: 'Demo',
+                    date: 'December 26, 2022',
                 },
                 stories: {
                     title: 'STORIES',
-                    img: 'travel-alone.webp'
+                    img: 'travel-alone.webp',
+                    mainType: 'Stories',
+                    secondType: 'Travel',
+                    description: 'Traveling Alone Is Awesome',
+                    user: 'Demo',
+                    date: 'December 26, 2022',
+
                 },
                 travel: {
                     title: 'TRAVEL',
-                    img: 'best-places.webp'
+                    img: 'best-places.webp',
+                    mainType: 'Lifestyle',
+                    secondType: 'Stories',
+                    thirdType: 'Travel',
+                    description: 'Places For A Road Trip',
+                    user: 'Demo',
+                    date: 'December 25, 2022',
                 }
             },
             lifestyleStories: {
@@ -100,13 +129,148 @@ export default {
 
 <template>
     <main>
-        <section class="middle-banner">
+        <section class="animes">
             <div class="container">
-                <div class="banner-div">
-                    <img src="../assets/img/page-banner-1-768x71.webp" alt="banner">
+                <div class="row">
+                    <div class="col-3">
+                        <div class="div-img">
+                            <img :src="getImg(`../assets/img/${topics.fashion.img}`)" alt="">
+
+                            <div class="mini-card">
+                                <span>
+                                    {{ topics.fashion.mainType }}
+                                </span>
+                                <span>
+                                    {{ topics.fashion.secondType }}
+                                </span>
+                            </div>
+                            <div class="info-card">
+                                <span>
+                                    <i class="fa-solid fa-user"></i>
+                                    {{ topics.fashion.user }}
+                                </span>
+                                <span>
+                                    <i class="fa-regular fa-calendar"></i>
+                                    {{ topics.fashion.date }}
+                                </span>
+                                <div>
+                                    {{ topics.fashion.description }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="div-img">
+                            <img :src="getImg(`../assets/img/${topics.stories.img}`)" alt="">
+
+                            <div class="mini-card">
+                                <span>
+                                    {{ topics.stories.mainType }}
+                                </span>
+                                <span>
+                                    {{ topics.stories.secondType }}
+                                </span>
+                            </div>
+                            <div class="info-card">
+                                <span>
+                                    <i class="fa-solid fa-user"></i>
+                                    {{ topics.stories.user }}
+                                </span>
+                                <span>
+                                    <i class="fa-regular fa-calendar"></i>
+                                    {{ topics.stories.date }}
+                                </span>
+                                <div>
+                                    {{ topics.stories.description }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="div-img">
+                            <img :src="getImg(`../assets/img/${topics.travel.img}`)" alt="">
+
+                            <div class="mini-card">
+                                <span>
+                                    {{ topics.travel.mainType }}
+                                </span>
+                                <span>
+                                    {{ topics.travel.secondType }}
+                                </span>
+                                <span>
+                                    {{ topics.travel.thirdType }}
+                                </span>
+                            </div>
+                            <div class="info-card">
+                                <span>
+                                    <i class="fa-solid fa-user"></i>
+                                    {{ topics.travel.user }}
+                                </span>
+                                <span>
+                                    <i class="fa-regular fa-calendar"></i>
+                                    {{ topics.travel.date }}
+                                </span>
+                                <div>
+                                    {{ topics.travel.description }}
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-3">
+                        <div class="div-img">
+                            <img :src="getImg(`../assets/img/${topics.culture.img}`)" alt="">
+
+                            <div class="mini-card">
+                                <span>
+                                    {{ topics.culture.mainType }}
+                                </span>
+                                <span>
+                                    {{ topics.culture.secondType }}
+                                </span>
+                            </div>
+                            <div class="info-card">
+                                <span>
+                                    <i class="fa-solid fa-user"></i>
+                                    {{ topics.culture.user }}
+                                </span>
+                                <span>
+                                    <i class="fa-regular fa-calendar"></i>
+                                    {{ topics.culture.date }}
+                                </span>
+                                <div>
+                                    {{ topics.culture.description }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="div-img">
+                            <img :src="getImg(`../assets/img/${topics.lifestyle.img}`)" alt="">
+
+                            <div class="mini-card">
+                                <span>
+                                    {{ topics.lifestyle.mainType }}
+                                </span>
+                                <span>
+                                    {{ topics.lifestyle.secondType }}
+                                </span>
+                            </div>
+                            <div class="info-card">
+                                <span>
+                                    <i class="fa-solid fa-user"></i>
+                                    {{ topics.lifestyle.user }}
+                                </span>
+                                <span>
+                                    <i class="fa-regular fa-calendar"></i>
+                                    {{ topics.lifestyle.date }}
+                                </span>
+                                <div>
+                                    {{ topics.lifestyle.description }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
+
         <section class="lifestyle-stories">
             <div class="container">
                 <div class="row">
@@ -128,7 +292,6 @@ export default {
                             </div>
                         </div>
                     </div>
-
                 </div>
                 <div class="row-cards">
                     <div class="col-left">
@@ -177,15 +340,17 @@ export default {
                                 </div>
                             </div>
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
-
         </section>
-
+        <section class="middle-banner">
+            <div class="container">
+                <div class="banner-div">
+                    <img src="../assets/img/page-banner-1-768x71.webp" alt="banner">
+                </div>
+            </div>
+        </section>
         <section class="featured-posts">
             <div class="container">
                 <h2>
@@ -246,6 +411,85 @@ main {
     & .container {
         width: 1000px;
         margin: 0 auto;
+    }
+
+    & .animes {
+        padding: 50px 0;
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+
+            & .col-3 {
+                display: flex;
+                flex-direction: column;
+
+                & .div-img {
+                    position: relative;
+                    width: 100%;
+                    height: 200px;
+                }
+
+                & .div-img:first-child {
+                    margin-bottom: 10px;
+                }
+            }
+
+            & .col-6 {
+                display: flex;
+
+                & .div-img {
+                    position: relative;
+                    width: 100%;
+                    height: 100%;
+                    margin: 0 5px;
+                }
+            }
+
+            & img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 10px;
+                filter: brightness(0.5);
+            }
+
+            & .mini-card {
+                position: absolute;
+                top: 20px;
+                left: 50%;
+                transform: translate(-50%);
+
+                & span {
+                    padding: 2px 10px;
+                    margin: 2px;
+                    border: 1px solid black;
+                    border-radius: 5px;
+                    background-color: $third-color;
+
+                }
+            }
+
+            & .info-card {
+                text-align: center;
+                width: max-content;
+                position: absolute;
+                bottom: 10px;
+                left: 50%;
+                transform: translate(-50%);
+                color: $secondary-color;
+                font-weight: bold;
+
+                & span {
+                    padding: 0 5px;
+                }
+
+                & div {
+                    padding: 5px 0;
+                }
+            }
+        }
+
     }
 
     & .middle-banner {
