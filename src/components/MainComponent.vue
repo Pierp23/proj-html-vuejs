@@ -29,6 +29,39 @@ export default {
                     img: 'best-places.webp'
                 }
             },
+            lifestyleStories: {
+                successPost: {
+                    user: 'Demo',
+                    date: 'December 26, 2022',
+                    img: 'success-story.webp',
+                    title: 'The Best Success Stories',
+                    type: 'Culture'
+                },
+                asidePosts: {
+                    alonePost: {
+                        user: 'Demo',
+                        date: 'December 26, 2022',
+                        img: 'travel-alone.webp',
+                        title: 'Traveling Alone Is Awesome',
+                        type: 'Stories'
+                    },
+                    sucessPost: {
+                        user: 'Demo',
+                        date: 'December 25, 2022',
+                        img: 'best-places.webp',
+                        title: 'Places For A Road Trip',
+                        type: 'Lifestyle'
+                    },
+                    musicPost: {
+                        user: 'Demo',
+                        date: 'December 25, 2022',
+                        img: 'anime-fashion.webp',
+                        title: 'Music The Love Of My Life',
+                        type: 'Culture'
+                    }
+                }
+
+            },
             featuredPosts: {
                 animePost: {
                     date: 'December 26, 2022',
@@ -73,6 +106,84 @@ export default {
                     <img src="../assets/img/page-banner-1-768x71.webp" alt="banner">
                 </div>
             </div>
+        </section>
+        <section class="lifestyle-stories">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <h2>
+                            Lifestyle & Stories
+                        </h2>
+                    </div>
+                    <div class="col">
+                        <div class="categories">
+                            <div>
+                                ALL
+                            </div>
+                            <div>
+                                LIFESTYLE
+                            </div>
+                            <div>
+                                STORIES
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row-cards">
+                    <div class="col-left">
+                        <div class="div-img">
+                            <img :src="getImg(`../assets/img/${lifestyleStories.successPost.img}`)" alt="">
+
+                            <div class="mini-card">
+                                <span>
+                                    {{ lifestyleStories.successPost.type }}
+                                </span>
+                            </div>
+                            <div class="info-card">
+                                <span>
+                                    <i class="fa-solid fa-user"></i>
+                                    {{ lifestyleStories.successPost.user }}
+                                </span>
+                                <span>
+                                    <i class="fa-regular fa-calendar"></i>
+                                    {{ lifestyleStories.successPost.date }}
+                                </span>
+                                <div>
+                                    {{ lifestyleStories.successPost.title }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-rigth">
+                        <div class="mini-container" v-for="(asideCard, index) in lifestyleStories.asidePosts" :key="index">
+                            <div class="div-img-aside">
+                                <img :src="getImg(`../assets/img/${asideCard.img}`)" alt="">
+                                <div class="card-type">
+                                    {{ asideCard.type }}
+                                </div>
+                            </div>
+                            <div class="info-aside-card">
+                                <span>
+                                    <i class="fa-solid fa-user"></i>
+                                    {{ asideCard.user }}
+                                </span>
+                                <span>
+                                    <i class="fa-regular fa-calendar"></i>
+                                    {{ asideCard.date }}
+                                </span>
+                                <div>
+                                    {{ asideCard.title }}
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
         </section>
 
         <section class="featured-posts">
@@ -153,6 +264,128 @@ main {
         }
     }
 
+    & .lifestyle-stories {
+        & .container {
+            & .row {
+                display: flex;
+                justify-content: space-between;
+
+                & .col {
+                    & h2 {
+                        text-transform: uppercase;
+                    }
+
+                    .categories {
+                        display: flex;
+
+                        & div {
+                            margin: 0 5px;
+                            padding: 5px 10px;
+                            background-color: $fourth-color;
+                            color: $secondary-color;
+                            border-radius: 5px;
+                        }
+                    }
+                }
+            }
+
+            & .row-cards {
+                display: flex;
+                justify-content: left;
+
+                .col-left {
+                    width: calc(100% / 5) * 3;
+                    margin-right: 20px;
+
+                    & .div-img {
+                        position: relative;
+
+                        & img {
+                            width: 100%;
+                            filter: brightness(0.5);
+                        }
+
+                        & .mini-card {
+                            position: absolute;
+                            top: 10px;
+                            left: 10px;
+
+                            & span {
+                                padding: 2px 10px;
+                                margin: 2px;
+                                border: 1px solid black;
+                                border-radius: 5px;
+                                background-color: $third-color;
+
+                            }
+                        }
+
+                        & .info-card {
+                            position: absolute;
+                            bottom: 20px;
+                            left: 20px;
+                            color: $secondary-color;
+                            font-weight: bold;
+
+                            & span {
+                                padding: 0 5px;
+                            }
+
+                            & div {
+                                padding: 5px 0;
+                            }
+                        }
+                    }
+                }
+
+                & .mini-container {
+                    display: flex;
+                    justify-content: left;
+                    align-items: center;
+                    border-bottom: 1px solid black;
+
+                    & .div-img-aside {
+                        width: 150px;
+                        height: 100px;
+                        margin: 10px 0;
+                        position: relative;
+
+                        & .card-type {
+                            position: absolute;
+                            top: 5px;
+                            left: 10px;
+                            padding: 2px 10px;
+                            margin: 2px;
+                            border: 1px solid black;
+                            border-radius: 5px;
+                            background-color: $third-color;
+                        }
+
+                        & img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                            border-radius: 10px;
+                            filter: brightness(0.7);
+                        }
+                    }
+
+                    & .info-aside-card {
+                        padding-left: 10px;
+
+                        & span {
+                            padding: 0 5px;
+                        }
+
+                        & div {
+                            padding: 5px 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     & .featured-posts {
 
         & h2 {
@@ -186,7 +419,7 @@ main {
                         transform: translate(- 50%);
 
 
-                        span {
+                        & span {
                             padding: 2px 10px;
                             margin: 2px;
                             border: 1px solid black;
