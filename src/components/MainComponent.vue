@@ -3,6 +3,40 @@ export default {
     name: "MainComponent",
     data() {
         return {
+            scroll: {
+                food: {
+                    title: 'FOOD',
+                    img: 'healthy-foods.webp',
+                    mainType: 'Food',
+                    secondType: '',
+                    date: 'December 26, 2022',
+                    description: 'The Best Healthy Food In 2022'
+                },
+                winter: {
+                    title: 'WINTER',
+                    img: 'winter.webp',
+                    mainType: 'Fashion',
+                    secondType: '',
+                    date: 'December 26, 2022',
+                    description: 'The Best Winter Outfits'
+                },
+                mistakes: {
+                    title: 'MISTAKES',
+                    img: 'photographers-mistakes.webp',
+                    mainType: 'Fashion',
+                    secondType: '',
+                    date: 'December 26, 2022',
+                    description: "Begginer Photograper's Mistakes"
+                },
+                ideas: {
+                    title: 'IDEAS',
+                    img: 'ideas-anime.webp',
+                    mainType: 'Culture',
+                    secondType: 'Stories',
+                    date: 'December 26, 2022',
+                    description: "Live Ideas You Might Be Anime"
+                }
+            },
             topics: {
                 fashion: {
                     title: 'FASHION',
@@ -63,30 +97,33 @@ export default {
                     user: 'Demo',
                     date: 'December 26, 2022',
                     img: 'success-story.webp',
-                    title: 'The Best Success Stories',
-                    type: 'Culture'
+                    description: 'The Best Success Stories',
+                    mainType: 'Culture'
                 },
                 asidePosts: {
                     alonePost: {
                         user: 'Demo',
                         date: 'December 26, 2022',
                         img: 'travel-alone.webp',
-                        title: 'Traveling Alone Is Awesome',
-                        type: 'Stories'
+                        description: 'Traveling Alone Is Awesome',
+                        mainType: 'Stories'
                     },
                     sucessPost: {
                         user: 'Demo',
                         date: 'December 25, 2022',
                         img: 'best-places.webp',
-                        title: 'Places For A Road Trip',
-                        type: 'Lifestyle'
+                        description: 'Places For A Road Trip',
+                        mainType: 'Lifestyle'
                     },
                     musicPost: {
+                        title: 'CULTURE',
+                        img: 'music-love.webp',
+                        mainType: 'Culture',
+                        secondType: 'Lifestyle',
+                        description: 'Music The Love Of My Life',
                         user: 'Demo',
                         date: 'December 25, 2022',
-                        img: 'anime-fashion.webp',
-                        title: 'Music The Love Of My Life',
-                        type: 'Culture'
+
                     }
                 }
 
@@ -129,6 +166,40 @@ export default {
 
 <template>
     <main>
+        <section class="scroll-div">
+            <div class="row">
+                <span class="prev">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </span>
+                <span class="next">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </span>
+                <div class="my-col" v-for="(cardScroll, index) in scroll" :key="index">
+                    <div class="img-container">
+                        <img :src="getImg(`../assets/img/${cardScroll.img} `)" :alt="cardScroll.title">
+                        <div class="mini-card">
+                            <span>
+                                {{ cardScroll.mainType }}
+                            </span>
+                            <span v-if="cardScroll.secondType !== ''">
+                                {{ cardScroll.secondType }}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="infos">
+                        <div class="description">
+                            {{ cardScroll.description }}
+                        </div>
+                        <div class="date-info">
+                            {{ cardScroll.date }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+
         <section class="animes">
             <div class="container">
                 <div class="row">
@@ -213,31 +284,30 @@ export default {
                                 </div>
                             </div>
                         </div>
-
                     </div>
                     <div class="col-3">
                         <div class="div-img">
-                            <img :src="getImg(`../assets/img/${topics.culture.img}`)" alt="">
+                            <img :src="getImg(`../assets/img/${lifestyleStories.asidePosts.musicPost.img}`)" alt="">
 
                             <div class="mini-card">
                                 <span>
-                                    {{ topics.culture.mainType }}
+                                    {{ lifestyleStories.asidePosts.musicPost.mainType }}
                                 </span>
                                 <span>
-                                    {{ topics.culture.secondType }}
+                                    {{ lifestyleStories.asidePosts.musicPost.secondType }}
                                 </span>
                             </div>
                             <div class="info-card">
                                 <span>
                                     <i class="fa-solid fa-user"></i>
-                                    {{ topics.culture.user }}
+                                    {{ lifestyleStories.asidePosts.musicPost.user }}
                                 </span>
                                 <span>
                                     <i class="fa-regular fa-calendar"></i>
-                                    {{ topics.culture.date }}
+                                    {{ lifestyleStories.asidePosts.musicPost.date }}
                                 </span>
                                 <div>
-                                    {{ topics.culture.description }}
+                                    {{ lifestyleStories.asidePosts.musicPost.description }}
                                 </div>
                             </div>
                         </div>
@@ -300,7 +370,7 @@ export default {
 
                             <div class="mini-card">
                                 <span>
-                                    {{ lifestyleStories.successPost.type }}
+                                    {{ lifestyleStories.successPost.mainType }}
                                 </span>
                             </div>
                             <div class="info-card">
@@ -313,7 +383,7 @@ export default {
                                     {{ lifestyleStories.successPost.date }}
                                 </span>
                                 <div>
-                                    {{ lifestyleStories.successPost.title }}
+                                    {{ lifestyleStories.successPost.description }}
                                 </div>
                             </div>
                         </div>
@@ -323,7 +393,7 @@ export default {
                             <div class="div-img-aside">
                                 <img :src="getImg(`../assets/img/${asideCard.img}`)" alt="">
                                 <div class="card-type">
-                                    {{ asideCard.type }}
+                                    {{ asideCard.mainType }}
                                 </div>
                             </div>
                             <div class="info-aside-card">
@@ -336,7 +406,7 @@ export default {
                                     {{ asideCard.date }}
                                 </span>
                                 <div>
-                                    {{ asideCard.title }}
+                                    {{ asideCard.description }}
                                 </div>
                             </div>
                         </div>
@@ -411,6 +481,104 @@ main {
     & .container {
         width: 1000px;
         margin: 0 auto;
+    }
+
+    & .scroll-div {
+        background-color: $third-color;
+        padding: 20px;
+
+        & .row {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+
+            & .prev {
+                font-size: 15px;
+                font-weight: bolder;
+                text-align: center;
+                line-height: 20px;
+                background-color: $secondary-color;
+                border-radius: 50%;
+                width: 20px;
+                height: 20px;
+                color: $fourth-color;
+                position: absolute;
+                top: 50%;
+                left: 10px;
+                z-index: 1
+            }
+
+            & .next {
+                font-size: 15px;
+                font-weight: bolder;
+                text-align: center;
+                line-height: 20px;
+                background-color: $secondary-color;
+                border-radius: 50%;
+                width: 20px;
+                height: 20px;
+                color: $fourth-color;
+                position: absolute;
+                top: 50%;
+                right: 10px;
+                z-index: 1
+            }
+
+            & .next:hover,
+            & .prev:hover {
+                background-color: $main-color;
+            }
+
+
+            & .my-col {
+                width: calc(100% / 4 - 10px);
+                margin: 0 5px;
+
+                background-color: $secondary-color;
+
+                & .img-container {
+                    width: 100%;
+                    position: relative;
+
+
+                    & img {
+                        width: 100%;
+                        object-fit: cover;
+                    }
+
+                    & .mini-card {
+                        position: absolute;
+                        top: 20px;
+                        left: 50%;
+                        transform: translate(-50%);
+
+                        & span {
+                            padding: 2px 10px;
+                            margin: 2px;
+                            border: 1px solid black;
+                            border-radius: 5px;
+                            background-color: $third-color;
+
+                        }
+                    }
+                }
+
+                & .infos {
+                    text-align: center;
+                    padding: 5px 0;
+
+                    & .description {
+                        font-weight: bold;
+                    }
+
+                    & .date-info {
+                        font-size: 10px;
+                    }
+                }
+
+
+            }
+        }
     }
 
     & .animes {
