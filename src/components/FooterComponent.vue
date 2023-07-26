@@ -39,9 +39,9 @@ export default {
                 <div class="my-col-3-3">
                     <div class="row">
                         <div class="col-3" v-for="(list, i) in ftList" :key="i">
-                            <h3>
+                            <h2>
                                 {{ list.title }}
-                            </h3>
+                            </h2>
                             <ul>
                                 <li v-for="(li, i) in ftList[i].list" :key="i">
                                     <a href="#">
@@ -54,7 +54,7 @@ export default {
                     </div>
                 </div>
                 <div class="my-col-1-3 form-div">
-                    <h3>Subscribe to newsletter</h3>
+                    <h2>Subscribe to newsletter</h2>
                     <form action="">
                         <input type="email" placeholder="   Email">
                         <button type="submit">SUBSCRIBE</button>
@@ -85,7 +85,7 @@ footer {
     background-color: $main-color;
 
     .container {
-        width: 1000px;
+        width: 1300px;
         margin: 0 auto;
         padding-top: 30px;
 
@@ -103,7 +103,7 @@ footer {
                     justify-content: space-between;
                     align-items: center;
 
-                    & h3 {
+                    & h2 {
                         text-transform: uppercase;
                         color: $secondary-color;
                     }
@@ -124,8 +124,10 @@ footer {
                                     color: $fourth-color;
                                 }
                             }
+                        }
 
-
+                        & li:not(h2) {
+                            font-size: 15px;
                         }
                     }
                 }
@@ -138,7 +140,7 @@ footer {
             & .form-div {
                 margin-left: 50px;
 
-                h3 {
+                h2 {
                     text-transform: uppercase;
                     color: $secondary-color;
                 }
@@ -151,6 +153,7 @@ footer {
                 }
 
                 button {
+                    font-size: 15px;
                     color: $secondary-color;
                     background-color: $fourth-color;
                     display: block;

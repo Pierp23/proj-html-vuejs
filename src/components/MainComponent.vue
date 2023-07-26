@@ -152,50 +152,56 @@ export default {
                 }
 
             },
-            trailers: {
-                first: {
+            trailers: [
+                {
                     number: 1,
                     title: 'Overlord Season 4 - Official Trailer 3 | AniTV',
-                    img: 'sddefault.webp',
+                    image: 'sddefault.webp',
 
                 },
-                second: {
+                {
                     number: 2,
                     title: 'Rent A Girlfriend Season 2 - Official Trailer | AniTV',
-                    img: 'hqdefault (1).jpg'
+                    image: 'hqdefault (1).jpg'
                 },
-                third: {
+                {
                     number: 3,
                     title: 'Uncle From Another World - Official Trailer 2 | AniTV',
-                    img: 'hqdefault (1).jpg'
+                    image: 'travel-alone.webp'
                 },
-                fourth: {
+                {
                     number: 4,
                     title: 'Prima Doll - Official Trailer | AniTV',
-                    img: 'hqdefault (1).jpg'
+                    image: 'sddefault.webp'
                 },
-                fifth: {
+                {
                     number: 5,
                     title: 'Shoot!! Goal To The Future - Official Trailer | AniTV',
-                    img: 'hqdefault (1).jpg'
+                    image: 'best-places.webp'
                 },
-                six: {
+                {
                     number: 6,
                     title: 'Boolean Season 101 - Official Trailer | AniTV',
-                    img: 'hqdefault (1).jpg'
+                    image: 'hqdefault (1).jpg'
                 },
-                seven: {
+                {
                     number: 7,
                     title: 'Front-End Developer Final Season - Official Trailer | AniTV',
-                    img: 'hqdefault (1).jpg'
+                    image: 'music-love.webp'
                 }
-            }
+            ],
+            indexActive: 0,
         }
+
     },
     props: {},
     methods: {
         getImg: function (imgX) {
             return new URL(imgX, import.meta.url).href
+        },
+        activePost(i) {
+            this.indexActive = i;
+            console.log(i)
         }
 
     }
@@ -426,7 +432,7 @@ export default {
                             </div>
                         </div>
                     </div>
-                    <div class="col-rigth">
+                    <div class="col-right">
                         <div class="mini-container" v-for="(asideCard, index) in lifestyleStories.asidePosts" :key="index">
                             <div class="div-img-aside">
                                 <img :src="getImg(`../assets/img/${asideCard.img}`)" alt="">
@@ -466,14 +472,9 @@ export default {
                         Featured Posts
                     </h2>
                     <div class="chevrons">
-
                         <i class="fa-solid fa-chevron-left"></i>
-
-
                         <i class="fa-solid fa-chevron-right"></i>
-
                     </div>
-
                 </div>
                 <div class="row">
                     <div class="my-col" v-for="(card, i) in featuredPosts" :key="i">
@@ -498,9 +499,7 @@ export default {
                                 Read more
                             </a>
                         </div>
-
                     </div>
-
                 </div>
             </div>
 
@@ -511,18 +510,19 @@ export default {
                 <div class="row">
                     <div class="my-col">
                         <div class="trailer-max-container">
-                            <img :src="getImg(`../assets/img/${trailers.first.img} `)" alt="">
+                            <img :src="getImg(`../assets/img/${trailers[indexActive].image}`)"
+                                :alt="trailers[indexActive].title">
                             <div class="over-icons">
                                 <div class="left">
                                     <div class="tv-icon">
                                         <a href="#">
-                                            <img src="../assets/img/channels4_profile.jpg" alt="">
+                                            <img src="../assets/img/channels4_profile.jpg" alt="logo-channel">
                                         </a>
 
                                     </div>
                                     <div class="title">
                                         <a href="#">
-                                            TITOLO
+                                            {{ trailers[indexActive].title }}
                                         </a>
                                     </div>
                                 </div>
@@ -570,16 +570,16 @@ export default {
                                     Video Playlist
                                 </p>
                                 <p>
-                                    1/7 Videos
+                                    {{ trailers[indexActive].number }}/7 Videos
                                 </p>
                             </div>
                         </div>
-                        <div class="aside-bar" v-for="(trailer, index) in trailers" :key="index">
-                            <div class="number-icon">
+                        <div @click="activePost(index)" class="aside-bar" v-for="(trailer, index) in trailers" :key="index">
+                            <div :class="indexActive == index ? 'active-number number-icon' : 'number-icon'">
                                 {{ trailer.number }}
                             </div>
                             <div class="trailer-mini-container">
-                                <img :src="getImg(`../assets/img/${trailer.img} `)" :alt="trailer.title">
+                                <img :src="getImg(`../assets/img/${trailer.image} `)" :alt="trailer.title">
                             </div>
                             <div class="infos">
                                 <p>
@@ -633,7 +633,7 @@ main {
     }
 
     & .container {
-        width: 1000px;
+        width: 1300px;
         margin: 0 auto;
     }
 
@@ -647,35 +647,43 @@ main {
             position: relative;
 
             & .prev {
-                font-size: 15px;
+                font-size: 20px;
                 font-weight: bolder;
                 text-align: center;
-                line-height: 20px;
+                line-height: 40px;
                 background-color: $secondary-color;
                 border-radius: 50%;
-                width: 20px;
-                height: 20px;
+                width: 40px;
+                height: 40px;
                 color: $fourth-color;
                 position: absolute;
                 top: 50%;
                 left: 10px;
-                z-index: 1
+                z-index: 1;
+
+                &:hover {
+                    cursor: pointer;
+                }
             }
 
             & .next {
-                font-size: 15px;
+                font-size: 20px;
                 font-weight: bolder;
                 text-align: center;
-                line-height: 20px;
+                line-height: 40px;
                 background-color: $secondary-color;
                 border-radius: 50%;
-                width: 20px;
-                height: 20px;
+                width: 40px;
+                height: 40px;
                 color: $fourth-color;
                 position: absolute;
                 top: 50%;
                 right: 10px;
-                z-index: 1
+                z-index: 1;
+
+                &:hover {
+                    cursor: pointer;
+                }
             }
 
             & .next:hover,
@@ -707,26 +715,27 @@ main {
                         transform: translate(-50%);
 
                         & span {
+                            font-size: 18px;
                             padding: 2px 10px;
                             margin: 2px;
                             border: 1px solid black;
                             border-radius: 5px;
                             background-color: $third-color;
-
                         }
                     }
                 }
 
                 & .infos {
+                    font-size: 18px;
                     text-align: center;
-                    padding: 5px 0;
+                    padding: 20px 0;
 
                     & .description {
                         font-weight: bold;
                     }
 
                     & .date-info {
-                        font-size: 10px;
+                        font-size: 15px;
                     }
                 }
 
@@ -741,15 +750,23 @@ main {
         .row {
             display: flex;
             justify-content: space-between;
+            height: 500px;
 
             & .col-3 {
+                width: calc(100% / 4 * 1);
                 display: flex;
                 flex-direction: column;
+                justify-content: space-between;
 
                 & .div-img {
                     position: relative;
                     width: 100%;
-                    height: 200px;
+                    height: 100%;
+
+                    &:hover {
+                        scale: 103%;
+                        cursor: pointer;
+                    }
                 }
 
                 & .div-img:first-child {
@@ -759,6 +776,12 @@ main {
 
             & .col-6 {
                 display: flex;
+                width: calc(100% / 4 * 3);
+
+                &:hover {
+                    scale: 101%;
+                    cursor: pointer;
+                }
 
                 & .div-img {
                     position: relative;
@@ -783,6 +806,7 @@ main {
                 transform: translate(-50%);
 
                 & span {
+                    font-size: 18px;
                     padding: 2px 10px;
                     margin: 2px;
                     border: 1px solid black;
@@ -793,6 +817,7 @@ main {
             }
 
             & .info-card {
+                font-size: 15px;
                 text-align: center;
                 width: max-content;
                 position: absolute;
@@ -826,11 +851,14 @@ main {
             & img {
                 width: 100%;
                 height: 100%;
+                object-fit: cover;
             }
         }
     }
 
     & .lifestyle-stories {
+        padding: 30px 0;
+
         & .container {
             & .row {
                 display: flex;
@@ -845,6 +873,7 @@ main {
                         display: flex;
 
                         & div {
+                            font-size: 18px;
                             margin: 0 5px;
                             padding: 5px 10px;
                             background-color: $fourth-color;
@@ -861,17 +890,28 @@ main {
 
                 .col-left {
                     width: calc(100% / 5) * 3;
+                    max-height: 500px;
                     margin-right: 20px;
+
+                    &:hover {
+                        scale: 103%;
+                        cursor: pointer;
+                    }
 
                     & .div-img {
                         position: relative;
+                        height: 100%;
+                        width: 100%;
 
                         & img {
                             width: 100%;
+                            height: 100%;
+                            object-fit: cover;
                             filter: brightness(0.5);
                         }
 
                         & .mini-card {
+                            font-size: 18px;
                             position: absolute;
                             top: 10px;
                             left: 10px;
@@ -882,7 +922,6 @@ main {
                                 border: 1px solid black;
                                 border-radius: 5px;
                                 background-color: $third-color;
-
                             }
                         }
 
@@ -891,7 +930,66 @@ main {
                             bottom: 20px;
                             left: 20px;
                             color: $secondary-color;
-                            font-weight: bold;
+
+                            & span {
+                                padding: 0 5px;
+                                font-size: 18px;
+                            }
+
+                            & div {
+                                padding: 5px 0;
+                                font-weight: bold;
+                                font-size: 20px;
+                            }
+                        }
+                    }
+                }
+
+                & .col-right {
+                    width: calc(100% / 5 * 2);
+                    max-height: 500px;
+
+                    & .mini-container {
+                        height: calc(100% / 3);
+                        display: flex;
+                        justify-content: left;
+                        align-items: center;
+                        border-bottom: 1px solid black;
+
+                        &:hover {
+                            scale: 103%;
+                            cursor: pointer;
+                        }
+
+                        & .div-img-aside {
+                            width: 200px;
+                            height: 150px;
+                            margin: 10px 0;
+                            position: relative;
+
+                            & .card-type {
+                                position: absolute;
+                                top: 5px;
+                                left: 10px;
+                                padding: 2px 10px;
+                                margin: 2px;
+                                border: 1px solid black;
+                                border-radius: 5px;
+                                background-color: $third-color;
+                            }
+
+                            & img {
+                                width: 100%;
+                                height: 100%;
+                                object-fit: cover;
+                                border-radius: 10px;
+                                filter: brightness(0.7);
+                            }
+                        }
+
+                        & .info-aside-card {
+                            font-size: 18px;
+                            padding-left: 10px;
 
                             & span {
                                 padding: 0 5px;
@@ -899,60 +997,20 @@ main {
 
                             & div {
                                 padding: 5px 0;
+                                font-weight: bold;
                             }
                         }
                     }
                 }
 
-                & .mini-container {
-                    display: flex;
-                    justify-content: left;
-                    align-items: center;
-                    border-bottom: 1px solid black;
 
-                    & .div-img-aside {
-                        width: 150px;
-                        height: 100px;
-                        margin: 10px 0;
-                        position: relative;
-
-                        & .card-type {
-                            position: absolute;
-                            top: 5px;
-                            left: 10px;
-                            padding: 2px 10px;
-                            margin: 2px;
-                            border: 1px solid black;
-                            border-radius: 5px;
-                            background-color: $third-color;
-                        }
-
-                        & img {
-                            width: 100%;
-                            height: 100%;
-                            object-fit: cover;
-                            border-radius: 10px;
-                            filter: brightness(0.7);
-                        }
-                    }
-
-                    & .info-aside-card {
-                        padding-left: 10px;
-
-                        & span {
-                            padding: 0 5px;
-                        }
-
-                        & div {
-                            padding: 5px 0;
-                        }
-                    }
-                }
             }
         }
     }
 
     & .featured-posts {
+        padding: 30px 0;
+
         & .top {
             display: flex;
             justify-content: space-between;
@@ -979,7 +1037,6 @@ main {
                     cursor: pointer;
                 }
             }
-
         }
 
 
@@ -989,6 +1046,11 @@ main {
 
             & .my-col {
                 width: calc(100% / 3 - 10px);
+
+                &:hover {
+                    scale: 103%;
+                    cursor: pointer;
+                }
 
                 & .card-img {
                     width: 100%;
@@ -1003,11 +1065,11 @@ main {
                     }
 
                     & .mini-card {
+                        font-size: 18px;
                         position: absolute;
                         top: 10px;
                         left: 50%;
                         transform: translate(- 50%);
-
 
                         & span {
                             padding: 2px 10px;
@@ -1015,12 +1077,12 @@ main {
                             border: 1px solid black;
                             border-radius: 5px;
                             background-color: $third-color;
-
                         }
                     }
                 }
 
                 & .card-info {
+                    font-size: 18px;
                     text-align: center;
                     padding: 20px 0;
                     background-color: $third-color;
@@ -1031,7 +1093,7 @@ main {
                     }
 
                     & a {
-                        padding: 5px 15px;
+                        padding: 10px 30px;
                         background-color: $main-color;
                         border-radius: 20px;
                         color: $secondary-color;
@@ -1052,7 +1114,7 @@ main {
 
         & .row {
             display: flex;
-            max-height: 400px;
+            max-height: 500px;
             overflow: hidden;
 
             & .my-col {
@@ -1070,6 +1132,7 @@ main {
                     }
 
                     & .over-icons {
+                        font-size: 18px;
                         display: flex;
                         justify-content: space-between;
                         position: absolute;
@@ -1099,8 +1162,6 @@ main {
                             & .title {
                                 margin: 0 10px;
                             }
-
-
                         }
 
                         & .right {
@@ -1130,12 +1191,12 @@ main {
                     }
 
                     & .over-link {
+                        font-size: 18px;
                         position: absolute;
                         bottom: 0;
                         left: 0;
                         color: $secondary-color;
                         background-color: $fourth-color;
-
                         padding: 10px;
                     }
                 }
@@ -1165,6 +1226,11 @@ main {
                         text-align: center
                     }
 
+                    & .active-number {
+                        background-color: $main-color;
+                        color: $secondary-color;
+                    }
+
                     & .trailer-mini-container {
                         flex-shrink: 0;
                         width: 80px;
@@ -1180,7 +1246,7 @@ main {
                     }
 
                     & .infos {
-                        font-size: 15px;
+                        font-size: 18px;
                     }
                 }
 
@@ -1189,27 +1255,22 @@ main {
                     color: $secondary-color;
 
                     & .play-icon {
-                        font-size: 20px;
-                        margin-right: 10px
+                        font-size: 30px;
+                        margin-right: 20px
                     }
 
                     & .videos {
-                        font-size: 18px;
+                        font-size: 20px;
 
                         & p:last-child {
-                            font-size: 12px;
+                            font-size: 15px;
                         }
                     }
-
                 }
             }
-
-
-
         }
-
-
     }
+
 
     & .main-bottom {
         padding: 20px 0;
@@ -1219,7 +1280,6 @@ main {
             justify-content: space-between;
 
             & .col-2 {
-
                 width: calc(100% / 6 - 5px);
                 margin: 0 5px;
 
@@ -1239,8 +1299,6 @@ main {
                             align-items: center;
                             cursor: pointer;
                         }
-
-
                     }
 
                     & img {
@@ -1256,7 +1314,7 @@ main {
                         color: $secondary-color;
                         font-weight: bold;
                         position: absolute;
-                        top: 30%;
+                        top: 50%;
                         left: 50%;
                         transform: translate(- 50%, - 50%);
                     }
@@ -1270,7 +1328,6 @@ main {
                         bottom: 0;
                         background-color: rgba(255, 0, 0, 0.2);
 
-
                         & .info {
                             border: 1px solid white;
                             display: flex;
@@ -1283,7 +1340,7 @@ main {
                             & p {
                                 margin: 10px 0;
                                 text-align: center;
-                                font-size: 15px;
+                                font-size: 20px;
                                 text-transform: uppercase;
                                 font-weight: bold;
                                 color: $secondary-color;
@@ -1293,13 +1350,8 @@ main {
                                 }
                             }
                         }
-
-
                     }
                 }
-
-
-
             }
         }
     }

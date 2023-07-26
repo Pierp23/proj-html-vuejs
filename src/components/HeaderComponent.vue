@@ -156,7 +156,7 @@ header {
         background-color: $main-color;
 
         & .container {
-            width: 1000px;
+            width: 1300px;
             margin: 0 auto;
 
             & .row {
@@ -169,6 +169,7 @@ header {
                 }
 
                 & .news {
+                    font-size: 18px;
                     display: flex;
                     width: max-content;
                     height: 100%;
@@ -181,8 +182,7 @@ header {
                 }
 
                 & .user {
-                    width: 30px;
-
+                    width: 50px;
                     height: 100%;
 
                     & img {
@@ -199,6 +199,7 @@ header {
                     text-transform: uppercase;
                     color: $secondary-color;
                     padding: 10px;
+                    font-size: 18px;
                 }
 
                 & ul {
@@ -207,6 +208,7 @@ header {
 
                     & li {
                         display: inline-block;
+                        font-size: 18px;
 
                         & a {
                             color: $secondary-color;
@@ -218,11 +220,11 @@ header {
                     }
 
                     & li:not(.chevron) {
-                        width: 20px;
-                        height: 20px;
+                        width: 40px;
+                        height: 40px;
                         border-radius: 50%;
                         text-align: center;
-                        line-height: 20px;
+                        line-height: 40px;
                         padding: 0;
                         margin: 0 5px;
                         background-color: $secondary-color;
@@ -240,11 +242,11 @@ header {
 
                     & .chevron {
                         color: $secondary-color;
-                        width: 20px;
-                        height: 20px;
+                        width: 40px;
+                        height: 40px;
                         border-radius: 50%;
                         text-align: center;
-                        line-height: 20px;
+                        line-height: 40px;
 
                         &:hover {
                             background-color: $fourth-color;
@@ -268,7 +270,7 @@ header {
         padding: 20px 0;
 
         & .container {
-            width: 1000px;
+            width: 1300px;
             margin: 0 auto;
 
             & .row {
@@ -276,7 +278,7 @@ header {
                 justify-content: space-between;
 
                 & .logo-div {
-                    width: 200px;
+                    width: 300px;
 
                     & img {
                         width: 100%;
@@ -291,7 +293,7 @@ header {
         padding: 20px 0;
 
         & .container {
-            width: 1000px;
+            width: 1300px;
             margin: 0 auto;
 
             & .row {
@@ -301,6 +303,7 @@ header {
                 & a {
                     text-decoration: none;
                     color: $fourth-color;
+                    font-size: 18px;
 
                     &:hover {
                         color: $main-color;
@@ -311,8 +314,12 @@ header {
                     list-style: none;
                     display: inline-block;
 
-                    & li i {
-                        padding: 0 5px;
+                    & li {
+                        font-size: 18px;
+
+                        & i {
+                            padding: 0 5px;
+                        }
                     }
                 }
             }
