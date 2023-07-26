@@ -44,7 +44,10 @@ export default {
                             </h3>
                             <ul>
                                 <li v-for="(li, i) in ftList[i].list" :key="i">
-                                    {{ li }}
+                                    <a href="#">
+                                        {{ li }}
+                                    </a>
+
                                 </li>
                             </ul>
                         </div>
@@ -111,8 +114,18 @@ footer {
                         margin-top: 10px;
 
                         & li {
-                            color: $secondary-color;
                             padding: 5px 0;
+
+                            & a {
+                                text-decoration: none;
+                                color: $secondary-color;
+
+                                &:hover {
+                                    color: $fourth-color;
+                                }
+                            }
+
+
                         }
                     }
                 }
@@ -145,6 +158,12 @@ footer {
                     width: 100%;
                     padding: 10px 0;
                     margin-bottom: 5px;
+
+                    &:hover {
+                        background-color: $secondary-color;
+                        color: $main-color;
+                        cursor: pointer;
+                    }
                 }
 
 
