@@ -591,6 +591,18 @@ export default {
                         <h3>
                             {{ topic.title }}
                         </h3>
+
+                        <div class="overlay">
+                            <div class="info">
+                                <p>
+                                    {{ topic.title }}
+                                </p>
+                                <p>
+                                    4 POSTS
+                                </p>
+                            </div>
+
+                        </div>
                     </div>
 
                 </div>
@@ -989,6 +1001,11 @@ main {
                         border-radius: 20px;
                         color: $secondary-color;
                         text-decoration: none;
+
+                        &:hover {
+                            background-color: $fourth-color;
+
+                        }
                     }
                 }
             }
@@ -1169,17 +1186,22 @@ main {
 
                 & .img-div {
                     width: 100%;
-                    height: 150px;
+                    height: width;
                     position: relative;
 
-                    &:hover img {
-                        cursor: pointer;
-                        filter: brightness(0.9);
-                    }
+                    &:hover {
+                        & h3 {
+                            display: none
+                        }
 
-                    &:hover h3 {
-                        cursor: pointer;
-                        text-shadow: 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black;
+                        & .overlay {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            cursor: pointer;
+                        }
+
+
                     }
 
                     & img {
@@ -1190,12 +1212,48 @@ main {
                     }
 
                     & h3 {
+                        font-size: 30px;
+                        text-shadow: 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black;
                         color: $secondary-color;
                         font-weight: bold;
                         position: absolute;
-                        top: 50%;
+                        top: 30%;
                         left: 50%;
                         transform: translate(- 50%, - 50%);
+                    }
+
+                    & .overlay {
+                        display: none;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        background-color: rgba(255, 0, 0, 0.2);
+
+
+                        & .info {
+                            border: 1px solid white;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            flex-direction: column;
+                            width: 70%;
+                            height: 70%;
+
+                            & p {
+                                margin: 10px 0;
+                                text-align: center;
+                                font-size: 15px;
+                                text-transform: uppercase;
+                                font-weight: bold;
+                                color: $secondary-color;
+
+                                &:first-of-type {
+                                    font-size: 30px
+                                }
+                            }
+                        }
 
 
                     }
