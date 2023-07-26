@@ -6,23 +6,29 @@ export default {
             hdList: {
                 home: {
                     text: 'HOME',
-                    icon: "fa-solid fa-home fa-lg"
+                    icon: "fa-solid fa-home fa-lg",
+                    chevron: ''
                 },
                 lifestyle: {
                     text: 'LIFESTYLE',
-                    icon: "fa-solid fa-suitcase fa-lg"
+                    icon: "fa-solid fa-suitcase fa-lg",
+                    chevron: "fa-solid fa-chevron-down fa-lg"
                 },
                 stories: {
                     text: 'STORIES',
-                    icon: "fa-solid fa-book-open-reader fa-lg"
+                    icon: "fa-solid fa-book-open-reader fa-lg",
+                    chevron: "fa-solid fa-chevron-down fa-lg"
                 },
                 pages: {
                     text: 'PAGES',
-                    icon: "fa-solid fa-book fa-lg"
+                    icon: "fa-solid fa-book fa-lg",
+                    chevron: "fa-solid fa-chevron-down fa-lg"
                 },
                 aboutUs: {
                     text: 'ABOUT US',
-                    icon: "fa-solid fa-user fa-lg"
+                    icon: "fa-solid fa-user fa-lg",
+                    chevron: ''
+
                 }
             }
         }
@@ -125,6 +131,7 @@ export default {
                                 <a href="#">
                                     <i :class="list.icon"></i>
                                     {{ list.text }}
+                                    <i :class="list.chevron"></i>
                                 </a>
                             </li>
                         </ul>
@@ -293,7 +300,11 @@ header {
 
                 & a {
                     text-decoration: none;
-                    color: $fourth-color
+                    color: $fourth-color;
+
+                    &:hover {
+                        color: $main-color;
+                    }
                 }
 
                 & ul {
