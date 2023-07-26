@@ -132,7 +132,7 @@ export default {
                 animePost: {
                     date: 'December 26, 2022',
                     text: 'Lorem ipsum dolor sit amet, conse ctetur adipiscing elit. Sed maximus orci ac condi mentum...',
-                    img: 'photographers-mistakes.webp',
+                    img: 'ideas-anime.webp',
                     title: 'Live Ideas You Might Be Anime',
                     type: ['Culture', 'Stories']
                 },
@@ -461,9 +461,20 @@ export default {
         </section>
         <section class="featured-posts">
             <div class="container">
-                <h2>
-                    Featured Posts
-                </h2>
+                <div class="top">
+                    <h2>
+                        Featured Posts
+                    </h2>
+                    <div class="chevrons">
+
+                        <i class="fa-solid fa-chevron-left"></i>
+
+
+                        <i class="fa-solid fa-chevron-right"></i>
+
+                    </div>
+
+                </div>
                 <div class="row">
                     <div class="my-col" v-for="(card, i) in featuredPosts" :key="i">
                         <div class="card-img">
@@ -942,11 +953,35 @@ main {
     }
 
     & .featured-posts {
+        & .top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
 
-        & h2 {
-            text-transform: uppercase;
-            padding: 10px 0;
+            & h2 {
+                text-transform: uppercase;
+                padding: 10px 0;
+            }
+
+            & .chevrons i {
+                width: 30px;
+                height: 30px;
+                padding: 10px;
+                margin: 0 5px;
+                text-align: center;
+                color: $secondary-color;
+                background-color: $fourth-color;
+
+                border-radius: 50%;
+
+                &:hover {
+                    background-color: $main-color;
+                    cursor: pointer;
+                }
+            }
+
         }
+
 
         & .row {
             display: flex;
@@ -1116,6 +1151,10 @@ main {
                     padding: 10px;
                     border-bottom: 1px solid black;
                     background-color: $third-color;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
 
                     & .number-icon {
                         font-size: 15px;
