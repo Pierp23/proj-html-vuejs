@@ -151,6 +151,44 @@ export default {
                     type: ['Stories', 'Travel']
                 }
 
+            },
+            trailers: {
+                first: {
+                    number: 1,
+                    title: 'Overlord Season 4 - Official Trailer 3 | AniTV',
+                    img: 'sddefault.webp',
+
+                },
+                second: {
+                    number: 2,
+                    title: 'Rent A Girlfriend Season 2 - Official Trailer | AniTV',
+                    img: 'hqdefault (1).jpg'
+                },
+                third: {
+                    number: 3,
+                    title: 'Uncle From Another World - Official Trailer 2 | AniTV',
+                    img: 'hqdefault (1).jpg'
+                },
+                fourth: {
+                    number: 4,
+                    title: 'Prima Doll - Official Trailer | AniTV',
+                    img: 'hqdefault (1).jpg'
+                },
+                fifth: {
+                    number: 5,
+                    title: 'Shoot!! Goal To The Future - Official Trailer | AniTV',
+                    img: 'hqdefault (1).jpg'
+                },
+                six: {
+                    number: 6,
+                    title: 'Boolean Season 101 - Official Trailer | AniTV',
+                    img: 'hqdefault (1).jpg'
+                },
+                seven: {
+                    number: 7,
+                    title: 'Front-End Developer Final Season - Official Trailer | AniTV',
+                    img: 'hqdefault (1).jpg'
+                }
             }
         }
     },
@@ -456,6 +494,95 @@ export default {
             </div>
 
         </section>
+
+        <section class="trailers">
+            <div class="container">
+                <div class="row">
+                    <div class="my-col">
+                        <div class="trailer-max-container">
+                            <img :src="getImg(`../assets/img/${trailers.first.img} `)" alt="">
+                            <div class="over-icons">
+                                <div class="left">
+                                    <div class="tv-icon">
+                                        <a href="#">
+                                            <img src="../assets/img/channels4_profile.jpg" alt="">
+                                        </a>
+
+                                    </div>
+                                    <div class="title">
+                                        <a href="#">
+                                            TITOLO
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="right">
+                                    <div class="watch-later">
+                                        <a href="#">
+                                            <i class="fa-regular fa-clock"></i>
+                                            <p>
+                                                Guarda più...
+                                            </p>
+                                        </a>
+
+                                    </div>
+                                    <div class="share">
+                                        <a href="#">
+                                            <i class="fa-solid fa-share"></i>
+                                            <p>
+                                                Condividi
+                                            </p>
+                                        </a>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="over-play-icon">
+                                <a href="#">
+                                    <i class="fa-brands fa-youtube fa-xl"></i>
+                                </a>
+
+                            </div>
+                            <div class="over-link">
+                                <a href="#">
+                                    Guarda su <i class="fa-brands fa-youtube"></i> YouTube
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="aside-bar" id="first-bar">
+                            <div class="play-icon">
+                                <i class="fa-solid fa-play fa-lg"></i>
+                            </div>
+                            <div class="videos">
+                                <p>
+                                    Video Playlist
+                                </p>
+                                <p>
+                                    1/7 Videos
+                                </p>
+                            </div>
+                        </div>
+                        <div class="aside-bar" v-for="(trailer, index) in trailers" :key="index">
+                            <div class="number-icon">
+                                {{ trailer.number }}
+                            </div>
+                            <div class="trailer-mini-container">
+                                <img :src="getImg(`../assets/img/${trailer.img} `)" :alt="trailer.title">
+                            </div>
+                            <div class="infos">
+                                <p>
+                                    {{ trailer.title }}
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </section>
         <section class="main-bottom">
             <div class="row">
                 <div class="col-2" v-for="(topic, index) in topics" :key="index">
@@ -477,6 +604,10 @@ export default {
 @use "../assets/scss/reset.scss" as *;
 
 main {
+    & a {
+        text-decoration: none;
+        color: $secondary-color;
+    }
 
     & .container {
         width: 1000px;
@@ -862,6 +993,166 @@ main {
                 }
             }
         }
+    }
+
+    & .trailers {
+        padding: 50px 0;
+
+        & .row {
+            display: flex;
+            max-height: 400px;
+            overflow: hidden;
+
+            & .my-col {
+                width: calc(100% / 3 * 2);
+
+                & .trailer-max-container {
+                    width: 100%;
+                    height: 100%;
+                    position: relative;
+
+                    & img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+
+                    & .over-icons {
+                        display: flex;
+                        justify-content: space-between;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        color: $secondary-color;
+                        padding: 10px 0;
+
+                        & .left {
+                            display: flex;
+                            align-items: center;
+
+                            & .tv-icon {
+                                width: 40px;
+                                height: 40px;
+                                margin: 0 10px;
+
+                                & img {
+                                    width: 100%;
+                                    height: 100%;
+                                    object-fit: cover;
+                                    border-radius: 50%
+                                }
+                            }
+
+                            & .title {
+                                margin: 0 10px;
+                            }
+
+
+                        }
+
+                        & .right {
+                            display: flex;
+                            align-items: center;
+                            margin: 0 10px;
+
+
+                            & .watch-later,
+                            & .share {
+                                text-align: center;
+                                margin: 0 10px;
+                            }
+                        }
+                    }
+
+                    & .over-play-icon {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%);
+
+                        & i {
+                            font-size: 60px;
+                            color: $main-color;
+                        }
+                    }
+
+                    & .over-link {
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        color: $secondary-color;
+                        background-color: $fourth-color;
+
+                        padding: 10px;
+                    }
+                }
+            }
+
+            & .col {
+                width: calc(100% / 3 * 1);
+                overflow-y: auto;
+
+                .aside-bar {
+                    display: flex;
+                    align-items: center;
+                    padding: 10px;
+                    border-bottom: 1px solid black;
+                    background-color: $third-color;
+
+                    & .number-icon {
+                        font-size: 15px;
+                        margin-right: 10px;
+                        border-radius: 5px;
+                        padding: 0 5px;
+                        border: 1px solid black;
+                        text-align: center
+                    }
+
+                    & .trailer-mini-container {
+                        flex-shrink: 0;
+                        width: 80px;
+                        height: 50px;
+                        margin-right: 10px;
+
+                        & img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                            border-radius: 10px;
+                        }
+                    }
+
+                    & .infos {
+                        font-size: 15px;
+                    }
+                }
+
+                #first-bar {
+                    background-color: $fourth-color;
+                    color: $secondary-color;
+
+                    & .play-icon {
+                        font-size: 20px;
+                        margin-right: 10px
+                    }
+
+                    & .videos {
+                        font-size: 18px;
+
+                        & p:last-child {
+                            font-size: 12px;
+                        }
+                    }
+
+                }
+            }
+
+
+
+        }
+
+
     }
 
     & .main-bottom {
