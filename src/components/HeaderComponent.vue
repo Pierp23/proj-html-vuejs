@@ -45,7 +45,7 @@ export default {
                             News updates
                         </div>
                         <div class="user">
-                            <i class="fa-solid fa-user fa-xl"></i>
+                            <img src="../assets/img/rice-ball-150x150.webp" alt="">
                         </div>
                         <div class="date">
                             05:35 THE _
@@ -166,7 +166,7 @@ header {
                     width: max-content;
                     height: 100%;
                     align-items: center;
-                    padding: 5px;
+                    padding: 10px 20px;
                     font-weight: bold;
                     text-transform: uppercase;
                     color: $secondary-color;
@@ -174,7 +174,15 @@ header {
                 }
 
                 & .user {
-                    padding: 10px;
+                    width: 30px;
+
+                    height: 100%;
+
+                    & img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
                 }
 
                 & .date {
@@ -215,10 +223,27 @@ header {
                         & i:not(.chevron *) {
                             color: $main-color;
                         }
+
+                        &:hover {
+                            background-color: $fourth-color;
+                            color: $main-color;
+
+                        }
                     }
 
                     & .chevron {
                         color: $secondary-color;
+                        width: 20px;
+                        height: 20px;
+                        border-radius: 50%;
+                        text-align: center;
+                        line-height: 20px;
+
+                        &:hover {
+                            background-color: $fourth-color;
+                            color: $main-color;
+
+                        }
                     }
 
                     & .chevron-dx {
