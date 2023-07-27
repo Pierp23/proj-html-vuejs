@@ -3,8 +3,8 @@ export default {
     name: "MainComponent",
     data() {
         return {
-            scroll: {
-                food: {
+            scroll: [
+                {
                     title: 'FOOD',
                     img: 'healthy-foods.webp',
                     mainType: 'Food',
@@ -12,7 +12,7 @@ export default {
                     date: 'December 26, 2022',
                     description: 'The Best Healthy Food In 2022'
                 },
-                winter: {
+                {
                     title: 'WINTER',
                     img: 'winter.webp',
                     mainType: 'Fashion',
@@ -20,7 +20,7 @@ export default {
                     date: 'December 26, 2022',
                     description: 'The Best Winter Outfits'
                 },
-                mistakes: {
+                {
                     title: 'MISTAKES',
                     img: 'photographers-mistakes.webp',
                     mainType: 'Fashion',
@@ -28,7 +28,7 @@ export default {
                     date: 'December 26, 2022',
                     description: "Begginer Photograper's Mistakes"
                 },
-                ideas: {
+                {
                     title: 'IDEAS',
                     img: 'ideas-anime.webp',
                     mainType: 'Culture',
@@ -36,7 +36,7 @@ export default {
                     date: 'December 26, 2022',
                     description: "Live Ideas You Might Be Anime"
                 }
-            },
+            ],
             topics: {
                 fashion: {
                     title: 'FASHION',
@@ -202,8 +202,23 @@ export default {
         activePost(i) {
             this.indexActive = i;
             console.log(i)
+        },
+        prevClick() {
+            if (this.indexActive > 0) {
+                this.indexActive--;
+            }
+            else if (this.indexActive == 0) {
+                this.indexActive = this.scroll.length - 1;
+            }
+        },
+        nextClick() {
+            if (this.indexActive < this.scroll.length - 1) {
+                this.indexActive++;
+            }
+            else if (this.indexActive == this.scroll.length - 1) {
+                this.indexActive = 0;
+            }
         }
-
     }
 }
 </script>
@@ -212,13 +227,14 @@ export default {
     <main>
         <section class="scroll-div">
             <div class="row">
-                <span class="prev">
+                <span class="prev" @click="prevClick()">
                     <i class="fa-solid fa-chevron-left"></i>
                 </span>
-                <span class="next">
+                <span class="next" @click="nextClick()">
                     <i class="fa-solid fa-chevron-right"></i>
                 </span>
-                <div class="my-col" v-for="(cardScroll, index) in scroll" :key="index">
+                <div class="my-col" v-for="(cardScroll, index) in scroll" :key="index"
+                    :class="indexActive == index ? 'activeCard' : ''">
                     <div class="img-container">
                         <img :src="getImg(`../assets/img/${cardScroll.img} `)" :alt="cardScroll.title">
                         <div class="mini-card">
@@ -659,7 +675,7 @@ main {
                 position: absolute;
                 top: 50%;
                 left: 10px;
-                z-index: 1;
+                z-index: 2;
 
                 &:hover {
                     cursor: pointer;
@@ -679,7 +695,7 @@ main {
                 position: absolute;
                 top: 50%;
                 right: 10px;
-                z-index: 1;
+                z-index: 2;
 
                 &:hover {
                     cursor: pointer;
@@ -695,8 +711,13 @@ main {
             & .my-col {
                 width: calc(100% / 4 - 10px);
                 margin: 0 5px;
-
                 background-color: $secondary-color;
+
+                &.activeCard {
+                    border: 1px red solid;
+                    scale: 106%;
+                    z-index: 1;
+                }
 
                 & .img-container {
                     width: 100%;
