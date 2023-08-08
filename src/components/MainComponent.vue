@@ -157,40 +157,48 @@ export default {
                     number: 1,
                     title: 'Overlord Season 4 - Official Trailer 3 | AniTV',
                     image: 'sddefault.webp',
+                    link: 'https://www.youtube.com/watch?v=7ko6fhVS5IU',
 
                 },
                 {
                     number: 2,
                     title: 'Rent A Girlfriend Season 2 - Official Trailer | AniTV',
-                    image: 'hqdefault (1).jpg'
+                    image: 'hqdefault (1).jpg',
+                    link: 'https://www.youtube.com/watch?v=Q0KAQ7_YNEk'
                 },
                 {
                     number: 3,
                     title: 'Uncle From Another World - Official Trailer 2 | AniTV',
-                    image: 'travel-alone.webp'
+                    image: 'travel-alone.webp',
+                    link: 'https://www.youtube.com/watch?v=A3UCpef8-D0'
                 },
                 {
                     number: 4,
                     title: 'Prima Doll - Official Trailer | AniTV',
-                    image: 'sddefault.webp'
+                    image: 'sddefault.webp',
+                    link: 'https://www.youtube.com/watch?v=TNaXVxfYCZ0'
                 },
                 {
                     number: 5,
                     title: 'Shoot!! Goal To The Future - Official Trailer | AniTV',
-                    image: 'best-places.webp'
+                    image: 'best-places.webp',
+                    link: 'https://www.youtube.com/watch?v=1T7BFGACOU0'
                 },
                 {
                     number: 6,
                     title: 'Boolean Season 101 - Official Trailer | AniTV',
-                    image: 'hqdefault (1).jpg'
+                    image: 'hqdefault (1).jpg',
+                    link: 'https://www.youtube.com/watch?v=8wIIcrgpoyo'
                 },
                 {
                     number: 7,
                     title: 'Front-End Developer Final Season - Official Trailer | AniTV',
-                    image: 'music-love.webp'
+                    image: 'music-love.webp',
+                    link: 'https://www.youtube.com/watch?v=_c_hMehCORQ'
                 }
             ],
             indexActive: 0,
+            indexTrailer: 0,
         }
 
     },
@@ -202,6 +210,9 @@ export default {
         activePost(i) {
             this.indexActive = i;
             console.log(i)
+        },
+        activeTrailer(i) {
+            this.indexTrailer = i;
         },
         prevClick() {
             if (this.indexActive > 0) {
@@ -217,6 +228,22 @@ export default {
             }
             else if (this.indexActive == this.scroll.length - 1) {
                 this.indexActive = 0;
+            }
+        },
+        prevTrailer() {
+            if (this.indexTrailer > 0) {
+                this.indexTrailer--;
+            }
+            else if (this.indexTrailer == 0) {
+                this.indexTrailer = this.scroll.length - 1;
+            }
+        },
+        nextTrailer() {
+            if (this.indexTrailer < this.scroll.length - 1) {
+                this.indexTrailer++;
+            }
+            else if (this.indexTrailer == this.scroll.length - 1) {
+                this.indexTrailer = 0;
             }
         }
     }
@@ -526,7 +553,7 @@ export default {
                 <div class="row">
                     <div class="my-col">
                         <div class="trailer-max-container">
-                            <img :src="getImg(`../assets/img/${trailers[indexActive].image}`)"
+                            <img :src="getImg(`../assets/img/${trailers[indexTrailer].image}`)"
                                 :alt="trailers[indexActive].title">
                             <div class="over-icons">
                                 <div class="left">
@@ -538,7 +565,7 @@ export default {
                                     </div>
                                     <div class="title">
                                         <a href="#">
-                                            {{ trailers[indexActive].title }}
+                                            {{ trailers[indexTrailer].title }}
                                         </a>
                                     </div>
                                 </div>
@@ -564,7 +591,7 @@ export default {
                                 </div>
                             </div>
                             <div class="over-play-icon">
-                                <a href="#">
+                                <a :href="trailers[indexTrailer].link">
                                     <i class="fa-brands fa-youtube fa-xl"></i>
                                 </a>
 
@@ -586,12 +613,13 @@ export default {
                                     Video Playlist
                                 </p>
                                 <p>
-                                    {{ trailers[indexActive].number }}/7 Videos
+                                    {{ trailers[indexTrailer].number }}/7 Videos
                                 </p>
                             </div>
                         </div>
-                        <div @click="activePost(index)" class="aside-bar" v-for="(trailer, index) in trailers" :key="index">
-                            <div :class="indexActive == index ? 'active-number number-icon' : 'number-icon'">
+                        <div @click="activeTrailer(index)" class="aside-bar" v-for="(trailer, index) in trailers"
+                            :key="index">
+                            <div :class="indexTrailer == index ? 'active-number number-icon' : 'number-icon'">
                                 {{ trailer.number }}
                             </div>
                             <div class="trailer-mini-container">
